@@ -1,21 +1,15 @@
 
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import CenterLayout from '/.assets/layouts/CenterLayout'
-import PortalLayout from './assets/layouts/PortalLayout'
+import EventDetailsPage from './assets/pages/EventDetailsPage'
 
 function App() {
 
   return (
     <Routes>
-      <Route element={<CenterLayout />}>
-
-      </Route>
-
-      <Route path="">
-
-      </Route>
-
+      <Route path="/events" element={<Events />} />
+      <Route path="events/bookings:id" element={<Bookings />} />
+      <Route path="/events/:id" element={<EventDetailsPage />} />
     </Routes>
   )
 }
