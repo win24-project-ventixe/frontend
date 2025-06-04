@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
-const Bookings = () => {
-        const {id} = useParams()  
+        const Bookings = () => {
+                const navigate = useNavigate()
+                const {id} = useParams()  
                 const [event, setEvent] = useState({})
-                const [formData, setFormData] = useState({ eventId: id, firstName: '', lastName: '', email: '', streetName: '', postalCode: '', city: '' })
+                const [formData, setFormData] = useState({ eventId: id, firstName: '', lastName: '', email: '', streetName: '', postalCode: '', city: '', ticketQuantity: 1 })
                 
                 useEffect(() => {
                     getEvent()
@@ -13,7 +14,7 @@ const Bookings = () => {
 
                 const getEvent = async () => {
                     try {
-                            const res = await fetch(`URL från eventService API/${id}`)
+                            const res = await fetch(`https://ecu-eventservice-dmbkb3ekfnhyh8f7.swedencentral-01.azurewebsites.net/api/events/${id}`)
                             if(!res.ok) throw new Error("Failed to fetch event")
 
                             const data = await res.json()
@@ -25,7 +26,7 @@ const Bookings = () => {
 
                     const postBooking = async () => {
                         try {
-                            const res = await fetch(`URL från bookingService API/`, {
+                            const res = await fetch(`https://ecu-bookingservice-dhbph9c4arduhhe4.swedencentral-01.azurewebsites.net/api/bookings`, {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json'
@@ -37,6 +38,7 @@ const Bookings = () => {
                                 console.error("Booking failed")
                             } else {
                                 console.log("Booking successful")
+                                Navigate('/')
                             }
                         } catch (err) {
                             console.error("Error submitting booking", err)

@@ -7,7 +7,7 @@ const EventDetailsPage = () => {
         const [event, setEvent] = useState({})
     
         const getEvents = async () => {
-            const res = await fetch(`URL från eventService API/${id}`)
+            const res = await fetch(`https://ecu-eventservice-dmbkb3ekfnhyh8f7.swedencentral-01.azurewebsites.net/api/events/${id}`)
     
             if(res.ok) {
                 const response = await res.json()

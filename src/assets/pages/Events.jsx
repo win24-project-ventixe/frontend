@@ -1,6 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import EventCard from '../components/EventCard'
 import EventList from '../components/EventList'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
+import Nav from '../components/Nav'
 
 const Events = () => {
     const [events, setEvents] = useState([])
@@ -21,12 +24,18 @@ const Events = () => {
 
   return (
         <div className='portal-wrapper'>
-            <nav />
-            <header />
+            <nav>
+                <Nav />
+            </nav>
+            <header>
+                <Header />
+            </header>
             <main>
                 <EventList />
             </main>
-          
+            <footer>
+                <Footer />
+            </footer>
 
 
         </div> 
