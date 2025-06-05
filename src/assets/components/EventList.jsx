@@ -1,29 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import EventCard from './EventCard'
 
-const EventList = () => {
-    const [events, setEvents] = useState([])
 
-    const getEvents = async () => {
-        const res = await fetch("URL från eventService API")
-
-        if(res.ok) {
-            const response = await res.json()
-            setEvent(response.result)
-        }
-    }
-
-    useEffect(() => {
-
-    }, [])
-
+  const EventList = ({ events = []}) => {
   return (
-    <section id='events'>
-        {
-            events.map(event => (
-                    <EventCard key={event.id} item={event} />
-                ))
-        }
-
+    <section id="events">
+      {events.length > 0
+        ? events.map(event => <EventCard key={event.id} item={event} />)
+        : <p>There are currently no events to show.</p>
+      }
     </section>
   )
 }
