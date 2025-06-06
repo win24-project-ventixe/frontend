@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import ArrowLeft from '../Images/ArrowLeft.svg';
 
 
 const Bookings = () => {
@@ -80,7 +82,13 @@ const Bookings = () => {
     <div className="center-wrapper">
 
         <div className='form-card'>
-            <h1>Book Event – {event?.title || "Loading..."}</h1>
+            
+            <div className='book-event-group'>
+                 <Link to="/" className="btn back-btn">
+                    <img src={ArrowLeft} alt="Arrow left icon" />
+                </Link>
+                <h1>Book Event – {event?.title || "Loading..."}</h1>
+            </div>
 
             <form className='booking-form' onSubmit={handleSubmit} noValidate>
                 <div className='form-group'>

@@ -316,7 +316,6 @@ footer {
 
 .form-card h1 {
   color: var(--secondary-100);
-  margin-bottom: 3rem;
 }
 
 .booking-form {
@@ -342,6 +341,14 @@ footer {
   border-radius: 12px;
   padding: 8px;
   color: var(--text-color);
+}
+
+.book-event-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
 }
 
 /* buttons */
